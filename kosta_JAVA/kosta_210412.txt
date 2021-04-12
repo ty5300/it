@@ -1,0 +1,250 @@
+package com.gilbut.chapter1;
+
+public class kosta_200412 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		Compare_string_array1();		System.out.println();
+		Compare_string_array2();		System.out.println();
+		Compare_int_array();   			System.out.println();
+			
+		Compare_char_text();			System.out.println();
+		Compare_char_array();			System.out.println();
+		Compare_is_boolen();			System.out.println();
+		
+		contanins_charAt();				System.out.println();
+		Multi_array_creation(); 		System.out.println();
+		
+		QUIZ_String_to_aryChar();		System.out.println();
+	}
+	
+	
+	
+	static void Compare_string_array1() {
+		
+		//////////////////////////////////////////////////////////////		
+		// 단순 String일 때 밸류 형식인데, 비교할 때만 주소 비교하는 참조 형식이다.
+		// 배열 String[]은 밸류 형식.
+		System.out.println("Compare_string_array1. <배열 스트링의 포인팅 개념>");
+		String[] ary_t1 = new String[1];    System.out.println("ary_t1[0] : "+ary_t1[0] + "  초기화");
+		ary_t1[0] = "In";  			  		System.out.println("ary_t1[0] : "+ary_t1[0]);
+		String[] ary_t2 = new String[1]; 
+		ary_t2 = ary_t1;        // t1이 가리키던걸 t2도 함께 가리키게 되므로., 
+		ary_t2[0] = "Out";		// t2의 [0]를 변경하면 t1[0]을 변경하는게 됨.
+		 			  						System.out.println("ary_t1[0] : "+ary_t1[0]);		
+		//////////////////////////////////////////////////////////////
+		
+		
+		System.out.println();
+
+		String text1 = "hello world";  // string 을 새 주소를 할당하는데, 
+		String text2 = "hello world"; // 동일한 string라면 기존 주소를 넘겨줘버린다.
+		String text3 = new String("hello world"); 
+		// new String 이면 메모리에 동일한 string이 있는지 검색하지 않고, new !! 새로 주소를 만들어서 할당.
+		
+		System.out.println();
+		System.out.println("String. <동일한 단어의 주소 비교>");
+		if (text1 == text2)
+			System.out.println("text1 == text2 ; 주소가 같다");
+		else System.out.println("text1 == text2 ; 주소가 다르다");
+		
+		if (text1 == text3)
+			System.out.println("text1 == text3 ; 동일 문자는 주소가 같다");
+		else System.out.println("text1 == text3 ; new 생성자 이용한 동일 문자 -> 주소가 다르다");
+		
+		if (text1.equals(text3))    // equals는 참조 타입이더라도, 값을 비교한다.
+			System.out.println("text1.equals(text3) ; equals 값만 비교, 주소 무관"+"\n");
+		else System.out.println("text1.equals(text3) ; equals 비교 -> 값이 다르다"+"\n");
+
+		int n1 = 1;
+		int n2 = 1;
+		if (n1 == n2)
+			System.out.println("n1 == n2 ; int 값이 같으면 주소가 같다"+"\n");
+		else System.out.println("n1 == n2 ; 주소가 다르다");
+		
+		// 내재함수 찾는 법 : 변수명. -> 내재함수 리스트 뜬다. 
+		// 내재함수에 마우스 갖다 대면 타입 등 형식을 알 수 있다.
+		System.out.println("  charAt(마지막 문자 추출): "+text2.charAt( text2.length()-1)+"\n");
+		//	참조 타입이면 주소를 비교, 밸류 타입이면 값을 비교. 
+		//	단, 스트링(문자열)은 참조 타입이지만 값을 비교함.
+		
+
+		
+	}
+	
+	static void Compare_string_array2() {	
+		System.out.println("Compare_string_new_array2");
+		String[] ns = new String[2]; 	System.out.println("ns[0] : "+ns[0]+"	초기값");
+		string_text3(ns[0]);			System.out.println("ns[0] : "+ns[0]+"	단일값 인수");
+		string_text3(ns);				System.out.println("ns[0] : "+ns[0]+"	배열 인수");
+		
+	}
+	static String string_text3(String n) {   // String 은 배열이지만 값을 받을 준비가 된 것.
+		n = "change";
+		return "";
+	}
+	static String string_text3(String[] n) {
+		n[0] = "change";
+		return "";
+	}
+	
+	static void Compare_int_array() {  // 개념 이해 중요 !!!
+		System.out.println("Compare_int_array.");
+		int[] a = {100, 200};	System.out.println("a[0] : "+a[0]+"   초기값");
+//		int[] a = {100, 200};
+		toString_test(a[0]); 	System.out.println("a[0] : "+a[0]+"   단일값 인수");
+		toString_test(a);       System.out.println("a[0] : "+a[0]+"   배열 인수");
+		
+		
+	}
+	static int toString_test(int n) {
+		n = 500;		// n에는 b[0]의 값만 주어진 것이고, n은 새 주소라서
+						// 이 함수 내에서 n에 어떤 연산을 거쳐도 
+						// 어차피 주소가 다른 b[0]의 값은 변경되지 않는다.
+		return n;
+	}
+	static int toString_test(int[] A) {
+		A[0] = 300;   // n은 a의 주소를 그대로 받은 것이고, 
+		 			  // 그 주소의 첫 원소에 600을 할당한 것.
+		return A[0];
+	}
+
+	static void Compare_char_text() {
+		System.out.println("Compare_char_text.      char는 (\"a\" X) ('a' O)");
+
+		char[] ch = new char[2];
+		ch[0] = 'a';    					// char에서는 공백"" X, 꼭 'a' 한글자 넣어줘야 함.
+		System.out.println("ch[0] : "+ch[0]+"	초기값");
+
+//		ch[1] = 'b';
+		char_text(ch[0]);				System.out.println("ch[0] : "+ch[0]+"	단일값 인수");
+		char_text(ch);					System.out.println("ch[0] : "+ch[0]+"	배열 인수");
+			
+	}
+	static char char_text(char n) {
+		n = 'y';
+		return 'r' ;  					
+	}
+	static char char_text(char[] n) {
+		n[0] = 'x';
+		return 'r' ;
+	}
+		
+	static void Compare_char_array() {
+		System.out.println("Compare_char_array.");
+		char[][] cs_2 = new char[2][];
+		cs_2[0] = new char[2];
+		cs_2[1] = new char[2];
+		System.out.println("cs_2[0][0] : "+cs_2[0][0]+"    초기값 인수(공백)");
+		char_text(cs_2[0][0]); 			System.out.println("cs_2[0][0] : "+cs_2[0][0]+"    단일값 인수");
+		char_text(cs_2[0]);				System.out.println("cs_2[0][0] : "+cs_2[0][0]+"    배열 인수");
+	}
+	static void char_array(char[] c) {
+		c[0] = 'c'; 
+		return ;
+	}
+	static void char_array(char c) {
+		c = 'c';
+		return ;
+}
+		
+	static void Compare_is_boolen() {
+		System.out.println("Compare_is_boolen.");
+		boolean[] is_array = new boolean[2];		System.out.println("is_array[0] : "+is_array[0]+"    초기값(기본값)");
+		is_boolen(is_array[0]);						System.out.println("is_array[0] : "+is_array[0]+"    단일값 인수");
+		is_boolen(is_array);	   					System.out.println("is_array[0] : "+is_array[0]+"    배열 인수");
+
+		
+	}
+	static void is_boolen(boolean[] b) {   // 여기서 b는 주소를 받은 것.
+		b[0] = true ;
+	}
+	static void is_boolen(boolean b) {   // 여기서 b는 false를 받은 것.
+		b = true;
+	}
+		
+	static void contanins_charAt() {
+		System.out.println("contanins_charAt.");
+		String text = "School";
+		char[] cs = new char[text.length()];
+		
+		for (int i = 0; i < text.length(); i++) {
+			cs[i] = text.charAt(i);
+			System.out.println("text.charAt(index: "+i+") : "+text.charAt(i));
+		}
+		
+		String t = "ch" ;
+		if(text.contains(t)) {
+			System.out.println("text.contanins(\""+t+"\")로 "+t+"가 포함됨을 확인함.");
+		}
+//		System.out.println(cs.length); 
+	}
+	static void Multi_array_creation() {
+		//--- 배열의 주소 찍어보기. 참조(주소)를 나타내는 변수, 밸류(값)을 나타내는 변수 ---//
+		int[][] b = new int[3][];
+		b[0] = new int[3];
+		b[1] = new int[3];
+		b[2] = new int[3];
+		
+		b[0][0] = 1;
+		b[0][1] = 2;
+		b[0][2] = 3;
+		
+		System.out.println(b);
+		for (int i = 0; i < b.length; i++) {
+			for (int j = 0; j < b.length; j++) {
+				b[i][j]	= i+j;
+				System.out.println("b[i]    : "+b[i]);
+				System.out.println("b[i][j] : "+b[i][j]);	
+			}
+		}
+		
+		int[][] a2 = null;
+		a2 = new int[3][];  // * new int[][]; 는 ?    불가
+		//a2[0] = 300;		//불가, 2차 배열의 크기가 정해지지 않아서. 그러면?
+		a2[0] = new int[5]; 	// 위에서 [3][]로 비워뒀으니 new int[n]으로 크기를 정해줘야 한다.
+	
+		// or
+	
+		int[][] a = new int[3][];
+		a[0] = new int[3];
+		a[1] = new int[5];
+		a[2] = new int[2];
+	
+		a[0][0] = 1; a[0][1] = 2; a[0][2] = 3; 
+		a[1][0] = 1; a[1][1] = 2; a[1][2] = 3; a[1][3] = 4; a[1][4] = 5; 
+		a[2][0] = 1; a[2][1] = 2;	
+		
+		
+		System.out.println("1차 배열일 때는 a[0]는 값");
+		System.out.println("2차 배열일 때는 a[0]는 주소");
+		System.out.println("2차 배열일 때는 a[0][2]는 값");
+	}
+	
+	static void QUIZ_String_to_aryChar() {
+		System.out.println("String_to_aryChar");
+		String texts = "hello world test count";
+		String[] array_string = texts.split("\s");
+		char[][] char_text = new char[array_string.length][]; // char 배열 선언
+		
+		for (int i = 0; i < array_string.length; i++) { // char_text.length도 가능
+			// char 2차 배열의 크기를 정해줘야 한다. ------------- 오답 포인트 --//
+			char_text[i] = new char[array_string[i].length()]; 
+			// String 에서는 일반 length가 아닌 length()함수 사용.
+						
+			for (int j = 0; j < array_string[i].length(); j++ ) {  // char_text.length도 가능
+				char_text[i][j] = array_string[i].charAt(j);
+//				System.out.println(array_string[i].charAt(j));	
+			}System.out.println();
+		}
+		System.out.println("=========== QUIZ ===========");
+		
+		for (int i = 0; i < array_string.length; i++) {			// char_text.length도 가능
+			for(int j = 0; j < array_string[i].length(); j++) { // char_text.length도 가능
+				System.out.print(char_text[i][j]+"\t");
+			}System.out.println();
+		}
+		System.out.println();
+	}
+}
+	
