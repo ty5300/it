@@ -7,17 +7,15 @@ public class kosta_200413 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		findN();
-//		getCharString();
+//		findN();
 //		stringSplitParseInt();
-//		stringS(); // 복습한 것 지우기.
 //		guguDan();
 //		makingStar();
-//		test(10);
-//		K();
+//		test(10); // 재귀함수
+//		arrayListInteger();
 	}
 
-	static void K() {
+	static void arrayListInteger() {
 		
 		ArrayList<int[]> list2 = new ArrayList<int[]>(4);
 		list2 = new ArrayList<int[]>(3);
@@ -40,8 +38,10 @@ public class kosta_200413 {
 //		list.add("C");
 
 		System.out.println(list.size());
+		
+		//--- QUIZ : i는 최초 size 크기만큼 가야하고 마지막 size는 0이 되도록 //
 		int k = list.size();
-		for(int i = 0 ; i < k  ; i++) {
+		for(int i = 0 ; i < k  ; i++) {  // i < list.size()를 밖으로 빼는 이유? 안에 넣어봐 안 되지!
 //			System.out.println(list.get(0));
 			System.out.println(i + "번째 : " +list.remove(0) + " - 제거 완료");
 			System.out.println("                     size : "+ list.size());
@@ -52,7 +52,7 @@ public class kosta_200413 {
 //			System.out.println(i + "번째 " +list.remove(0) + " - 제거 완료");
 //		}
 
-//		for(int i = list.size(); i > 0 ; i--) {
+//		for(int i = list.size(); i > 0 ; i--) {  // 뒤에서부터 제거
 ////			System.out.println(list.get(0));
 //			System.out.println(i + "번째 " +list.remove(0) + " - 제거 완료");
 //		}
@@ -97,10 +97,7 @@ public class kosta_200413 {
 			for (int j = k-i; j > 0; j--) {
 				System.out.print("* ");
 			}System.out.println();
-				
 		}
-		
-
 		
 		System.out.println();
 		for (int i = 1; i < k; i++) {
@@ -110,8 +107,6 @@ public class kosta_200413 {
 			System.out.println();
 			}
 		
-
-		
 		System.out.println();
 		for (int i = 1; i < k; i++) {
 			for (int j = 1; j < k; j++) 
@@ -119,7 +114,6 @@ public class kosta_200413 {
 				else System.out.printf("  ");
 			System.out.println();
 			}
-		
 	}
 	
 	static void guguDan() {
@@ -133,6 +127,7 @@ public class kosta_200413 {
 	
 
 	static void stringSplitParseInt() {
+		//--- 문자열에서 숫자만 골라내서 출력하기 ---//
 		String text = "hello=2;world=3;test=5;counts=7";
 		String[] n_text = text.split(";");
 //		System.out.println(n_text.length);
@@ -140,30 +135,18 @@ public class kosta_200413 {
 //			System.out.println(n_text[i].charAt(n_text[i].length()-1));
 			
 			int n = Integer.parseInt(n_text[i].charAt(  n_text[i].length()-1 )+"");
-			//---charAt은 1개 문자만 추출하는데, parseInt는 String만 받으니까 +"" 해주면 문자'열'이 된다.---//
-//			System.out.println(n*10);
+			// charAt은 1개 문자만 추출하는데, parseInt는 String만 받으니까 +"" 해주면 문자'열'이 된다.---//
+			// length()-1 에서 -1의 의미? charAt은 0부터 index 세니까, 총 길이 -1 하면 끝 원소 지칭.
+			System.out.println(n);
 //			System.out.println(n_text[i].indexOf("=")); 
+			System.out.println();
 			int ni = Integer.parseInt(n_text[i].indexOf("=")+"");    
 			//--- n_text[i].indexOf("=")  해당 문자열에서 "="의 인덱스를 반환 ---//
 			//--- Integer.parseInt --- 문자열을 (not char) 정수로 반환 ---//
 			//--- n_text[i].indexOf("=") 는 문자? 문자열? --- 문자! +"" 해줘야 한다. ---//
 //			System.out.println(" "+ni);
-			
-			
-			System.out.println(n_text[i].charAt(ni+1));
-		}
-//		NumberFormat f = NumberFormat.getInstance();
-//		f.setGroupingUsed(false);
-//		double double1 = Double.parseDouble("422919819819889189.3");
-//		System.out.println(f.format(double1));
-//		
-//		String v1 = "482811884";
-//		import java.math.BigDecimal
-//		BigDecimal bigNumber = new BigDecimal("10000.12345");
-//		
-//		
-		
-		
+			System.out.println("  "+n_text[i].charAt(ni+1));
+		}	
 	}
 	
 	
