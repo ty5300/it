@@ -1,2 +1,2 @@
 # it
-## BASIC JAVA 2021.05.09 ~ 
+* BASIC JAVA 2021.05.09 ~ 
