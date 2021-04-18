@@ -1,0 +1,110 @@
+	
+// 파일명 Astr.java //
+package day.com;
+import java.util.regex.*;
+
+public class Astr implements Comparable<Astr> { 
+	public Astr() {
+		// TODO Auto-generated constructor stub
+
+	}
+
+	String str="";
+
+	@Override
+	public int compareTo(Astr other) {
+
+
+			
+
+
+			System.out.print("other.str : " +other.str+ "   this.str : "+this.str+" - ");
+			
+			boolean bool1 = Pattern.matches("^[a-zA-Z]*$", this.str);
+			boolean bool2 = Pattern.matches("^[가-힣]*$", other.str);
+			if (bool1==bool2) {
+				System.out.println("bool");
+				return other.str.compareTo(this.str);
+				
+			}else if (Pattern.matches("^[0-9]*$", this.str)) {
+				System.out.println("숫자");
+				return other.str.compareTo(this.str);
+			   
+		   }else if (Pattern.matches("^[A-Z]*$",this.str)) {
+			   System.out.println("대문자");
+			   return this.str.compareTo(other.str);
+
+			   
+		   }else if (Pattern.matches("^[a-z]*$", this.str)) {
+			   System.out.println("소문자");
+			   return this.str.compareTo(other.str);
+			   
+		   }else if (Pattern.matches("^[가-힣]*$", this.str)) {
+			   System.out.println("한글");
+			   return this.str.compareTo(other.str);
+			
+		   }else if (Pattern.matches("^[~!@#$%^&*()_+|<>?:{}]*$", this.str)) {
+			   System.out.println("특수문자");
+			   return other.str.compareTo(this.str);
+			   
+		   }else {System.out.println("기타");
+				   return other.str.compareTo(this.str);
+			   }
+		}
+}
+
+// 파일명 : Day_04_16 //
+package day.com;
+
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class Day_04_16 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		set_test33(); // 가나다, abc, 숫자, 특수문자가 섞인 걸 정렬하려면??
+
+
+	}
+	
+	static void set_test33() { // 가나다, abc, 숫자, 특수문자가 섞인 걸 정렬하려면??
+		System.out.println("----------------- set_test33()------------------");
+		System.out.println("----- 가나다, abc, 숫자, 특수문자가 섞인 걸 정렬하려면?? -------");
+
+
+
+		// 가나다, abc, 숫자, 특수문자가 섞인 걸 정렬하려면??
+		TreeSet<Astr> ts = new TreeSet<Astr>();
+		Astr a1 = new Astr();		Astr a2 = new Astr();		Astr a3 = new Astr();
+		Astr a4 = new Astr();		Astr a5 = new Astr();		Astr a6 = new Astr();
+		Astr a7 = new Astr();		Astr a8 = new Astr();		Astr a9 = new Astr();
+		Astr a10 = new Astr();
+
+		a1.str = "cc";
+		a2.str = "aa";
+		a3.str = "bb";
+		a4.str = "aa";
+		a5.str = "DDD";
+		a6.str = "200";
+		a7.str = "54";
+		a8.str = "가가가";
+		a9.str = "나나";
+		a10.str = "%";
+		
+		ts.add(a1);		ts.add(a2);		ts.add(a3);		ts.add(a4);		
+		ts.add(a5);		ts.add(a6);		ts.add(a7);		ts.add(a8);
+		ts.add(a9);		ts.add(a10);
+		System.out.println("ts.size() : " + ts.size());
+
+		for (Astr i : ts) {
+			System.out.println(i.str);
+		}
+
+	}
+}
